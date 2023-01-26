@@ -1,5 +1,5 @@
 # simpsonet
-A simple CNN to detection [Simpson](https://en.wikipedia.org/wiki/The_Simpsons) characters.
+A simple CNN to detection [The Simpsons©](https://en.wikipedia.org/wiki/The_Simpsons) characters.
 
 ## Directories Layout
 ```
