@@ -1,10 +1,12 @@
 """
 Declarations of Characters that you want to detection.
 Declarations utils functions.
+If you want to change data, you have to edit this file.
 """
 import logging
 
 k_img_size = (64, 64)
+k_batch_size = 32
 
 characters = {
     0: 'abraham_grampa_simpson',
