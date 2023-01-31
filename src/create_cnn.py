@@ -4,7 +4,6 @@ Create CNN with 6 convolutional layers.
 import tensorflow.python.keras
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Dropout
-from sklearn.metrics import accuracy_score, log_loss
 from src.data import characters, k_batch_size
 import tensorflow as tf
 import numpy as np
@@ -12,7 +11,7 @@ from keras.optimizers import SGD
 from typing import Tuple
 
 
-def create_cnn(input_shape) -> tensorflow.python.keras.Model:
+def create_cnn(input_shape: tuple) -> tensorflow.python.keras.Model:
     """
     Create a CNN with 6 convolutional layers.
 
