@@ -1,10 +1,10 @@
 import unittest
 import logging
 from src.create_dataset import load_dataset, prepare_dataset
-from src.init import configure_logging
+from src.data import configure_logging
 
 
-class TestTrainCNN(unittest.TestCase):
+class TestCreateDataset(unittest.TestCase):
     def test_load_dataset(self):
         configure_logging("log_ut_create_dataset.log", True, log_lvl=logging.DEBUG)
         flag, _, _ = load_dataset("../dataset")
