@@ -11,7 +11,7 @@ from keras.optimizers import SGD
 from typing import Tuple
 
 
-def create_cnn(input_shape: tuple) -> tensorflow.python.keras.Model:
+def create_cnn(input_shape: tuple) -> Sequential:
     """
     Create a CNN with 6 convolutional layers.
 
