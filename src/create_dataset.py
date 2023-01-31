@@ -1,7 +1,7 @@
 """
 Create Dataset to training and evaluation a Convolutional NN.
 """
-from src.init import characters, k_img_size
+from src.data import characters, k_img_size
 
 # math and vision libs
 import numpy as np
@@ -29,7 +29,7 @@ def load_dataset(path: str) -> Tuple[bool, np.ndarray, np.ndarray]:
         logging.error("wrong directory")
         return False, np.zeros(1), np.zeros(1)
     if len(os.listdir(path)) != len(characters):
-        logging.error("all directories not")
+        logging.error("all characters must be detected")
         return False, np.zeros(1), np.zeros(1)
 
     # create dataset
