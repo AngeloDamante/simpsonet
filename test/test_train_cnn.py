@@ -2,7 +2,7 @@ import unittest
 import logging
 
 import tensorflow.python.keras
-
+from tensorflow.python.keras.models import Sequential
 from src.create_dataset import load_dataset, prepare_dataset
 from src.create_cnn import train_model, create_cnn
 from src.data import configure_logging, k_img_size, k_batch_size
@@ -13,8 +13,9 @@ k_dataset_dir = "../dataset"
 class TestCreateDataset(unittest.TestCase):
     def test_load_dataset(self):
         configure_logging("log_ut_create_dataset.log", True, log_lvl=logging.DEBUG)
-        flag, _, _ = load_dataset(k_dataset_dir)
+        flag, images, labels = load_dataset(k_dataset_dir)
         self.assertEqual(flag, True)
+        self.assertEqual(images.shape[0], labels.shape[0])
 
         flag, _, _ = load_dataset("/dataset")
         self.assertEqual(flag, False)
@@ -44,8 +45,8 @@ class TestTrainCnn(unittest.TestCase):
         self.y_train = dataset[2]
         self.y_test = dataset[3]
 
-        cnn_model = create_cnn(k_img_size)
-        self.assertEqual(type(cnn_model), tensorflow.python.keras.Model)
+        self.cnn_model = create_cnn(self.x_train.shape[1:])
+        self.assertTrue(isinstance(self.cnn_model, Sequential))
 
     def test_train_cnn(self):
         compiled_model, history = train_model(self.cnn_model,
@@ -56,7 +57,7 @@ class TestTrainCnn(unittest.TestCase):
 
         compiled_model.save("test_cnn.h5")
         with open("test_history.txt", "w+") as file:
-            file.write(history)
+            file.writelines(history)
 
 
 if __name__ == '__main__':
