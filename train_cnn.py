@@ -21,7 +21,7 @@ if __name__ == '__main__':
     if not is_good_preparation:
         exit(1)
 
-    cnn_model = create_cnn(args.size)
+    cnn_model = create_cnn(dataset[0].shape[1:])
     compiled_model, history = train_model(cnn_model,
                                           x_train=dataset[0],
                                           x_test=dataset[1],
