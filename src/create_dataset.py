@@ -15,11 +15,12 @@ import logging
 from typing import Tuple
 
 
-def load_dataset(path: str) -> Tuple[bool, np.ndarray, np.ndarray]:
+def load_dataset(path: str, img_size: tuple = k_img_size) -> Tuple[bool, np.ndarray, np.ndarray]:
     """
     To load dataset from desired path.
 
     :param path: absolute or relative path of dataset folder.
+    :param img_size: (width, height)
     :return: flag(bool) to check correctness
     :return: images(ndarray)
     :return: labels(ndarray)
@@ -37,7 +38,7 @@ def load_dataset(path: str) -> Tuple[bool, np.ndarray, np.ndarray]:
     labels = []
     for i, char in characters.items():
         for img in os.listdir(f'{path}/{char}'):
-            new_img = cv2.resize(cv2.imread(f'{path}/{char}/{img}'), k_img_size)
+            new_img = cv2.resize(cv2.imread(f'{path}/{char}/{img}'), img_size)
             pictures.append(new_img)
             labels.append(i)
     return True, np.array(pictures), np.array(labels)
